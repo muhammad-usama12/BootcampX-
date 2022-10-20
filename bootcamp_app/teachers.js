@@ -7,6 +7,9 @@ const pool = new Pool({
   database: "bootcampx",
 });
 
+cohortName = process.argv[2];
+const values = [`%${cohortName}%`];
+
 pool.query(`
 SELECT DISTINCT teachers.name as teacher, cohorts.name as cohort, count(assistance_requests.*) as total_assistance
 FROM teachers
